@@ -704,6 +704,25 @@ footer .funder { color: var(--ink); }
 .person-aff { font-family: var(--grot); font-size: 14px; opacity: 0.65; }
 .person-bio { font-family: var(--grot); font-size: 13px; line-height: 1.5; opacity: 0.6; margin: 8px 0 0; }
 
+/* compact person chip — no photo, for supporting team members */
+.person-chip {
+  box-shadow: inset 0 0 0 1px var(--ink);
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 18px 20px;
+  align-self: start;
+  border-top: 8px solid var(--blue);
+}
+.person-chip.uk { border-top-color: var(--pink); }
+.person-chip.us { border-top-color: var(--blue); }
+.person-chip .chip-role { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); }
+.person-chip.uk .chip-role { color: var(--pink); }
+.person-chip .chip-name { font-family: var(--mono); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; transition: color 0.15s ease; }
+.person-chip .chip-name:hover { color: var(--pink); }
+.person-chip .chip-aff { font-family: var(--grot); font-size: 14px; opacity: 0.65; }
+
 .partners-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(244px, 1fr)); gap: 16px; }
 .partner { box-shadow: inset 0 0 0 1px var(--ink); display: flex; flex-direction: column; background: var(--white); }
 .partner .bar { height: 6px; }
