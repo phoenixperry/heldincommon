@@ -12,18 +12,22 @@ const licenseTypes = [...new Set(MODELS.map((m) => m.licenseType))];
 function buildChips(containerId, values, setRef) {
   const container = document.getElementById(containerId);
   values.forEach((value) => {
-    const chip = document.createElement("div");
+    const chip = document.createElement("button");
+    chip.type = "button";
     chip.className = "chip";
     chip.textContent = value;
     chip.dataset.value = value;
+    chip.setAttribute("aria-pressed", "false");
     chip.addEventListener("click", () => {
-      if (setRef.has(value)) {
-        setRef.delete(value);
-        chip.classList.remove("active");
-      } else {
+      const active = !setRef.has(value);
+      if (active) {
         setRef.add(value);
         chip.classList.add("active");
+      } else {
+        setRef.delete(value);
+        chip.classList.remove("active");
       }
+      chip.setAttribute("aria-pressed", String(active));
       syncStatStrip();
       render();
     });
@@ -33,9 +37,12 @@ function buildChips(containerId, values, setRef) {
 
 function buildStatStrip() {
   const strip = document.getElementById("stat-strip");
-  const total = document.createElement("div");
+  const total = document.createElement("button");
+  total.type = "button";
   total.className = "stat-pill stat-all";
   total.innerHTML = `<strong>${MODELS.length}</strong> models`;
+  total.setAttribute("aria-label", `Show all ${MODELS.length} models`);
+  total.setAttribute("aria-pressed", "true");
   total.addEventListener("click", () => {
     state.modality.clear();
     syncChipGroup("modality-filters", state.modality);
@@ -46,10 +53,13 @@ function buildStatStrip() {
 
   modalities.forEach((mod) => {
     const count = MODELS.filter((m) => m.modality === mod).length;
-    const pill = document.createElement("div");
+    const pill = document.createElement("button");
+    pill.type = "button";
     pill.className = `stat-pill stat-${mod}`;
     pill.dataset.value = mod;
     pill.innerHTML = `<strong>${count}</strong> ${mod}`;
+    pill.setAttribute("aria-label", `Filter to ${count} ${mod} models`);
+    pill.setAttribute("aria-pressed", "false");
     pill.addEventListener("click", () => {
       if (state.modality.has(mod) && state.modality.size === 1) {
         state.modality.clear();
@@ -67,17 +77,18 @@ function buildStatStrip() {
 
 function syncChipGroup(containerId, setRef) {
   document.querySelectorAll(`#${containerId} .chip`).forEach((chip) => {
-    chip.classList.toggle("active", setRef.has(chip.dataset.value));
+    const on = setRef.has(chip.dataset.value);
+    chip.classList.toggle("active", on);
+    chip.setAttribute("aria-pressed", String(on));
   });
 }
 
 function syncStatStrip() {
   document.querySelectorAll(".stat-pill").forEach((pill) => {
     const value = pill.dataset.value;
-    pill.classList.toggle(
-      "active",
-      value ? state.modality.has(value) : state.modality.size === 0,
-    );
+    const on = value ? state.modality.has(value) : state.modality.size === 0;
+    pill.classList.toggle("active", on);
+    pill.setAttribute("aria-pressed", String(on));
   });
 }
 
@@ -130,22 +141,36 @@ function sortModels(list) {
 
 function cardTemplate(model, index) {
   const card = document.createElement("article");
-  card.className = "card";
+  card.className = "card modality-" + model.modality;
   card.style.animationDelay = `${Math.min(index * 35, 350)}ms`;
+  card.setAttribute("role", "button");
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("aria-label", `${model.model} by ${model.developer}. View details.`);
+  const bucket = commercialBucket(model.commercialUse);
+  const commLabel =
+    bucket === "full" ? "commercial ok" : bucket === "no" ? "non-commercial" : "conditional";
+  const commClass = bucket === "full" ? "comm-ok" : "comm-no";
   card.innerHTML = `
-    <div class="card-top">
-      <div>
-        <h3>${model.model}</h3>
-        <p class="developer">${model.developer} · ${model.year}</p>
+    <div class="card-bar"></div>
+    <div class="card-body">
+      <div class="card-head">
+        <span class="card-modality">${model.modality}</span>
+        <span class="card-license">${model.licenseType}</span>
       </div>
-      <span class="badge modality-${model.modality}">${model.modality}</span>
+      <h3>${model.model}</h3>
+      <p class="developer">${model.developer}</p>
+      <div class="card-foot">
+        <span class="commercial ${commClass}">${commLabel}</span>
+      </div>
     </div>
-    <div class="card-row"><span>Input → Output</span><span>${model.io}</span></div>
-    <div class="card-row"><span>Commercial Use</span><span>${model.commercialUse}</span></div>
-    <div class="card-row"><span>Data Disclosed</span><span>${model.dataDisclosed}</span></div>
-    <span class="license-pill type-${classify(model.licenseType)}">${model.licenseName}</span>
   `;
-  card.addEventListener("click", () => openModal(model));
+  card.addEventListener("click", () => openModal(model, card));
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openModal(model, card);
+    }
+  });
   return card;
 }
 
@@ -175,7 +200,27 @@ function workflowPath(wf, file) {
   );
 }
 
-function openModal(model) {
+let lastTrigger = null;
+function trapFocus(e) {
+  if (e.key !== "Tab") return;
+  const content = document.getElementById("modal-content");
+  const f = content.querySelectorAll(
+    'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])',
+  );
+  if (!f.length) return;
+  const first = f[0];
+  const last = f[f.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
+
+function openModal(model, trigger) {
+  lastTrigger = trigger || null;
   const overlay = document.getElementById("modal-overlay");
   const content = document.getElementById("modal-content");
   const wf = model.workflow || null;
@@ -236,11 +281,12 @@ function openModal(model) {
   content.innerHTML = `
     <div class="modal-top">
       <div>
-        <h2>${model.model}</h2>
+        <h2 id="modal-title">${model.model}</h2>
         <p class="developer">${model.developer} · ${model.year}</p>
       </div>
       <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
     </div>
+    ${model.url ? `<a class="model-link" href="${model.url}" target="_blank" rel="noopener">Visit model →</a>` : ""}
     ${tabBar}
     <div class="modal-tab-panel" data-panel="details">${detailsHTML}</div>
     ${hasOutput ? `<div class="modal-tab-panel hidden" data-panel="output">
@@ -258,8 +304,14 @@ function openModal(model) {
     </div>` : ""}
   `;
 
+  content.setAttribute("role", "dialog");
+  content.setAttribute("aria-modal", "true");
+  content.setAttribute("aria-labelledby", "modal-title");
+  content.setAttribute("tabindex", "-1");
   overlay.hidden = false;
   document.getElementById("modal-close").addEventListener("click", closeModal);
+  overlay.addEventListener("keydown", trapFocus);
+  document.getElementById("modal-close").focus();
 
   if (!wf) return;
 
@@ -297,7 +349,11 @@ function openModal(model) {
 }
 
 function closeModal() {
-  document.getElementById("modal-overlay").hidden = true;
+  const overlay = document.getElementById("modal-overlay");
+  overlay.hidden = true;
+  overlay.removeEventListener("keydown", trapFocus);
+  if (lastTrigger && document.body.contains(lastTrigger)) lastTrigger.focus();
+  lastTrigger = null;
 }
 
 document.getElementById("modal-overlay").addEventListener("click", (e) => {
