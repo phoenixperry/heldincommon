@@ -214,11 +214,22 @@ function openModal(model) {
     section("Technical", technical) +
     section("Notes / Ecosystem Fit", [["Summary", model.notes]]);
 
-  const tabBar = wf
+  const hasOutput = wf && (wf.image || wf.audio || wf.video);
+  const hasJson   = wf && wf.json;
+  const hasScript = wf && wf.script;
+
+  const outputHTML = !hasOutput ? "" : wf.image
+    ? `<img src="${workflowPath(wf, wf.image)}" alt="Model output" class="workflow-img">`
+    : wf.audio
+    ? `<audio controls class="workflow-audio"><source src="${workflowPath(wf, wf.audio)}"></audio>`
+    : `<video controls class="workflow-video"><source src="${workflowPath(wf, wf.video)}"></video>`;
+
+  const tabBar = wf && (hasOutput || hasJson || hasScript)
     ? `<div class="modal-tabs" role="tablist">
         <button class="modal-tab active" data-tab="details">Details</button>
-        <button class="modal-tab" data-tab="output">Output</button>
-        <button class="modal-tab" data-tab="workflow">Workflow JSON</button>
+        ${hasOutput  ? `<button class="modal-tab" data-tab="output">Output</button>` : ""}
+        ${hasJson    ? `<button class="modal-tab" data-tab="workflow">Workflow JSON</button>` : ""}
+        ${hasScript  ? `<button class="modal-tab" data-tab="script">Python Script</button>` : ""}
       </div>`
     : "";
 
@@ -232,14 +243,17 @@ function openModal(model) {
     </div>
     ${tabBar}
     <div class="modal-tab-panel" data-panel="details">${detailsHTML}</div>
-    ${wf ? `<div class="modal-tab-panel hidden" data-panel="output">
-      <div class="workflow-output">
-        <img src="${workflowPath(wf, wf.image)}" alt="Model output example" class="workflow-img">
-      </div>
-    </div>
-    <div class="modal-tab-panel hidden" data-panel="workflow">
+    ${hasOutput ? `<div class="modal-tab-panel hidden" data-panel="output">
+      <div class="workflow-output">${outputHTML}</div>
+    </div>` : ""}
+    ${hasJson ? `<div class="modal-tab-panel hidden" data-panel="workflow">
       <div class="workflow-json-wrap">
         <pre class="workflow-json" id="workflow-json-pre"><span class="wf-loading">Loading…</span></pre>
+      </div>
+    </div>` : ""}
+    ${hasScript ? `<div class="modal-tab-panel hidden" data-panel="script">
+      <div class="workflow-json-wrap">
+        <pre class="workflow-json" id="workflow-script-pre"><span class="wf-loading">Loading…</span></pre>
       </div>
     </div>` : ""}
   `;
@@ -257,18 +271,25 @@ function openModal(model) {
       tab.classList.add("active");
       content.querySelector(`[data-panel="${tab.dataset.tab}"]`).classList.remove("hidden");
 
-      // Lazy-load JSON when workflow tab first opened
+      // Lazy-load Workflow JSON on first open
       if (tab.dataset.tab === "workflow") {
         const pre = document.getElementById("workflow-json-pre");
         if (pre && pre.querySelector(".wf-loading")) {
           fetch(workflowPath(wf, wf.json))
             .then((r) => r.json())
-            .then((data) => {
-              pre.textContent = JSON.stringify(data, null, 2);
-            })
-            .catch(() => {
-              pre.textContent = "Could not load workflow JSON.";
-            });
+            .then((data) => { pre.textContent = JSON.stringify(data, null, 2); })
+            .catch(() => { pre.textContent = "Could not load workflow JSON."; });
+        }
+      }
+
+      // Lazy-load Python script on first open
+      if (tab.dataset.tab === "script") {
+        const pre = document.getElementById("workflow-script-pre");
+        if (pre && pre.querySelector(".wf-loading")) {
+          fetch(workflowPath(wf, wf.script))
+            .then((r) => r.text())
+            .then((code) => { pre.textContent = code; })
+            .catch(() => { pre.textContent = "Could not load script."; });
         }
       }
     });

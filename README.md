@@ -42,24 +42,32 @@ All fields:
 }
 ```
 
-## Adding a ComfyUI workflow
+## Adding a ComfyUI workflow / output
 
-To attach a ComfyUI workflow and output image to a model's detail view, place the files in a subfolder under `Image Audio Video Models/`:
+To attach a workflow and/or output sample to a model's detail view, place the files in a subfolder under `Image Audio Video Models/`:
 
 ```
 Image Audio Video Models/
   Your Model Name/
-    workflow.json       ← ComfyUI workflow export
-    output.png          ← example output image
+    workflow.json              ← ComfyUI workflow export (optional)
+    output.png / .wav / .mp4  ← example output (optional)
 ```
 
-Then add a `workflow` field to the model's entry in `data.js`:
+Then add a `workflow` field to the model's entry in `data.js`. All sub-fields are optional — include only what you have:
 
 ```js
-workflow: { folder: "Your Model Name", json: "workflow.json", image: "output.png" }
+workflow: {
+  folder: "Your Model Name",   // must match folder name exactly
+  json:   "workflow.json",     // ComfyUI workflow — shows Workflow JSON tab
+  image:  "output.png",        // image output   ─┐
+  audio:  "output.wav",        // audio output    ├ shows Output tab (use one)
+  video:  "output.mp4"         // video output   ─┘
+}
 ```
 
-The filenames can be anything — just make sure `folder`, `json`, and `image` match exactly. When a visitor clicks the model card, the modal will show three tabs: **Details**, **Output**, and **Workflow JSON**. Models without a `workflow` field show only the Details tab.
+The modal will show an **Output** tab (image viewer, audio player, or video player) and/or a **Workflow JSON** tab depending on what fields are present. Models with no `workflow` field show only the Details tab.
+
+> **Note:** if a model folder contains a Python virtual environment (`.venv/`), it is gitignored automatically — do not commit it.
 
 ## Running locally
 

@@ -80,7 +80,8 @@ const MODELS = [
     exportFormat: "PNG",
     openSource: "Yes",
     dataGap: "Research-only license; LAION data issues; cascade model requires significant compute",
-    notes: "Pioneered pixel-space cascade diffusion. Research-only use limits applicability."
+    notes: "Pioneered pixel-space cascade diffusion. Research-only use limits applicability.",
+    workflow: { folder: "Deepfloyd If", image: "deepfloyd_if_output.png", script: "deepfloydIf.py" }
   },
   {
     model: "StyleGAN / StyleGAN3",
@@ -120,7 +121,8 @@ const MODELS = [
     exportFormat: "MP4, GIF",
     openSource: "Yes",
     dataGap: "Training data partially cited but no attribution; runs on SD base = inherits SD data issues",
-    notes: "Plug-in motion module for SD. Apache license but inherits Stable Diffusion data IP issues."
+    notes: "Plug-in motion module for SD. Apache license but inherits Stable Diffusion data IP issues.",
+    workflow: { folder: "AnimatedDiff", json: "AnimatedDiff.json", image: "AnimateDiff_00002.png" }
   },
   {
     model: "Open-Sora (HPC-AI Tech)",
@@ -160,7 +162,8 @@ const MODELS = [
     exportFormat: "MP4",
     openSource: "Yes",
     dataGap: "Complete data opacity despite Apache license; state-of-the-art video quality",
-    notes: "Best open video model quality as of early 2025. Data provenance entirely opaque."
+    notes: "Best open video model quality as of early 2025. Data provenance entirely opaque.",
+    workflow: { folder: "Wan 2.1", json: "wan2.1.json", video: "Wan21_00001.mp4" }
   },
   {
     model: "MusicGen (Meta)",
@@ -220,7 +223,8 @@ const MODELS = [
     exportFormat: "WAV",
     openSource: "Yes",
     dataGap: "Source list published but consent status unclear for scraped sites; no output attribution",
-    notes: "MIT license + documented sources = good model. Matches gen-ai-for-music.alwaysdata.net entry."
+    notes: "MIT license + documented sources = good model. Matches gen-ai-for-music.alwaysdata.net entry.",
+    workflow: { folder: "Dance Diffusion", audio: "dance_diffusion_output_0.wav", script: "danceDiffusion.py" }
   },
   {
     model: "RAVE (IRCAM)",
@@ -280,6 +284,7 @@ const MODELS = [
     exportFormat: "WAV, FLAC",
     openSource: "Yes",
     dataGap: "Freesound CC licenses vary (some NC, some commercial) - aggregate license unclear; no per-output attribution",
-    notes: "Key model: trained on CC-licensed audio. Closest to ethically-sourced generative audio for this project."
+    notes: "Key model: trained on CC-licensed audio. Closest to ethically-sourced generative audio for this project.",
+    workflow: { folder: "Stable Audio Open", json: "stableAudioOpen.json", audio: "StableAudioOpen_output_00001.flac" }
   }
 ];
