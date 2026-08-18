@@ -3,11 +3,6 @@
 (function () {
   const canvas = document.getElementById("bg-canvas");
   if (!canvas) return;
-  // Respect users who prefer reduced motion: still draw the field, but as a
-  // single static frame — no animation loop.
-  const reduceMotion =
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const ctx = canvas.getContext("2d");
   const PINK = "255,45,155";
   const SP = 40;
@@ -91,7 +86,7 @@
       ctx.fillStyle = "rgba(" + PINK + "," + bright + ")";
       ctx.fill();
     }
-    if (!reduceMotion) raf = requestAnimationFrame(draw);
+    raf = requestAnimationFrame(draw);
   }
 
   setup();
