@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Get Started · Held in Common</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant:ital,wght@0,500;0,600;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles1.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <div class="page">
+      <nav class="site-nav">
+        <div class="brand">
+          <img
+            class="wordmark-logo"
+            src="../images/logo.png"
+            alt="Held in Common"
+            width="377"
+            height="100"
+          />
+          <span class="tagline">
+            Federated Data Commons for Creative Communities
+          </span>
+        </div>
+        <div class="nav-links">
+          <a href="../index.html">About</a>
+          <a href="../landscape.html">Landscape</a>
+          <a href="../people.html">People</a>
+          <a href="/workshop" class="active">Get Started</a>
+        </div>
+      </nav>
+      <div class="rule"></div>
+
+      <header class="sub-hero" id="content" tabindex="-1">
+        <h1 class="sub-h1">
+          Get started<span class="dot">.</span>
+        </h1>
+        <p class="lead">
+          Install the Held in Common node on your own machine, add your profile,
+          and share it to the workshop commons. Your data stays on your node.
+        </p>
+      </header>
+
+      <div class="section-label">
+        <span>1 &middot; Download the app</span>
+        <span class="rule-fill"></span>
+      </div>
+      <section class="dl-grid">
+        <div class="dl">
+          <div class="plat" style="color: var(--pink)">macOS</div>
+          <div class="dl-title">Apple Silicon</div>
+          <p class="dl-note">M1 / M2 / M3 Macs. Requires the open step below.</p>
+          <div class="dl-links">
+            <a
+              class="btn-ink"
+              href="https://github.com/HeldInCommon/FederatedBios/releases/download/node-app-preview/Held-In-Common-macOS-AppleSilicon.dmg"
+              >Download .dmg &rarr;</a
+            >
+          </div>
+        </div>
+        <div class="dl">
+          <div class="plat" style="color: var(--blue)">Linux</div>
+          <div class="dl-title">x86&nbsp;64-bit</div>
+          <p class="dl-note">Pick the format for your distro.</p>
+          <div class="dl-links">
+            <a
+              class="btn-line"
+              href="https://github.com/HeldInCommon/FederatedBios/releases/download/node-app-preview/Held-In-Common-Linux.deb"
+              >.deb (Debian / Ubuntu)</a
+            >
+            <a
+              class="btn-line"
+              href="https://github.com/HeldInCommon/FederatedBios/releases/download/node-app-preview/Held-In-Common-Linux.rpm"
+              >.rpm (Fedora / RHEL)</a
+            >
+            <a
+              class="btn-line"
+              href="https://github.com/HeldInCommon/FederatedBios/releases/download/node-app-preview/Held-In-Common-Linux.AppImage"
+              >.AppImage (any distro)</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <div class="section-label">
+        <span>2 &middot; Set up</span>
+        <span class="rule-fill"></span>
+      </div>
+      <section class="setup">
+        <div class="setup-step">
+          <div class="snum" style="background: var(--pink)">1</div>
+          <div class="sbody">
+            <div class="s-title">Open it</div>
+            <p>
+              The build is unsigned, so macOS blocks it the first time
+              (&ldquo;damaged / can&rsquo;t be opened&rdquo;). Clear the
+              quarantine flag once, in Terminal, then open the .dmg normally:
+            </p>
+            <div class="cmd">xattr -c ~/Downloads/Held-In-Common-macOS-AppleSilicon.dmg</div>
+            <p>On Linux, install the package or mark the AppImage executable and run it.</p>
+          </div>
+        </div>
+        <div class="setup-step">
+          <div class="snum" style="background: var(--blue)">2</div>
+          <div class="sbody">
+            <div class="s-title">Start your node</div>
+            <p>
+              Launch the app and click <strong>Start the node</strong>. It runs
+              locally at
+              <a class="inline-url" href="http://localhost:8080">http://localhost:8080</a>.
+            </p>
+          </div>
+        </div>
+        <div class="setup-step">
+          <div class="snum" style="background: var(--jade)">3</div>
+          <div class="sbody">
+            <div class="s-title">Add your profile</div>
+            <p>Fill in your bio and upload a photo. This is yours &mdash; it lives only on your node until you share it.</p>
+          </div>
+        </div>
+        <div class="setup-step">
+          <div class="snum" style="background: var(--violet)">4</div>
+          <div class="sbody">
+            <div class="s-title">Share to the commons</div>
+            <p>
+              In <strong>Share to a commons</strong> the workshop address is
+              pre-filled &mdash; just confirm it and share. Your signed profile
+              appears in the directory as <strong>Federated</strong>.
+            </p>
+            <div class="cmd">https://vbua1zoh50dz51-8888.proxy.runpod.net</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>You&rsquo;re in the commons.</h2>
+        <p class="lead">
+          Your originals stay on your node. You can reshape or withdraw what you
+          shared at any time.
+        </p>
+        <div class="cta-actions">
+          <a
+            href="https://vbua1zoh50dz51-8888.proxy.runpod.net"
+            class="btn-solid"
+            target="_blank"
+          >
+            Open the commons directory &rarr;
+          </a>
+          <a href="../index.html" class="btn-outline">How it works &rarr;</a>
+        </div>
+      </section>
+
+      <div class="sub-foot">We are an AHRC Braid funded research project.</div>
+    </div>
+
+    <script src="../bg.js"></script>
+  </body>
+</html>
