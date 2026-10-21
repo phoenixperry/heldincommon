@@ -52,13 +52,12 @@
 
       <div class="section-label">
         <span>1 &middot; Download the app</span>
-        <span class="rule-fill"></span>
       </div>
       <section class="dl-grid">
         <div class="dl">
           <div class="plat" style="color: var(--pink)">macOS</div>
           <div class="dl-title">Apple Silicon</div>
-          <p class="dl-note">M1 / M2 / M3 Macs. Requires the open step below.</p>
+          <p class="dl-note">M1 / M2 / M3 Macs. Then run the install line below.</p>
           <div class="dl-links">
             <a
               class="btn-ink"
@@ -93,24 +92,29 @@
 
       <div class="section-label">
         <span>2 &middot; Set up</span>
-        <span class="rule-fill"></span>
       </div>
       <section class="setup">
         <div class="setup-step">
-          <div class="snum" style="background: var(--pink)">1</div>
+          <svg class="burst" viewBox="0 0 100 100" aria-hidden="true">
+            <path fill="#ff2d9b" d="M50 2l9 13 15-6 2 16 16 3-9 13 9 13-16 3-2 16-15-6-9 13-9-13-15 6-2-16-16-3 9-13-9-13 16-3 2-16 15 6z"></path>
+            <text x="50" y="63" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="34" fill="#fff">1</text>
+          </svg>
           <div class="sbody">
-            <div class="s-title">Open it</div>
+            <div class="s-title">Install and open it</div>
             <p>
-              The build is unsigned, so macOS blocks it the first time
-              (&ldquo;damaged / can&rsquo;t be opened&rdquo;). Clear the
-              quarantine flag once, in Terminal, then open the .dmg normally:
+              The build is unsigned, so macOS quarantines it. Paste this one line
+              into Terminal &mdash; it clears the flag, copies the app to
+              Applications, and launches it:
             </p>
-            <div class="cmd">xattr -c ~/Downloads/Held-In-Common-macOS-AppleSilicon.dmg</div>
+            <div class="cmd">D=~/Downloads/Held-In-Common-macOS-AppleSilicon.dmg; xattr -c "$D" &amp;&amp; M=$(hdiutil attach "$D" -nobrowse | grep -o '/Volumes/.*') &amp;&amp; cp -R "$M/Held In Common.app" /Applications/ &amp;&amp; hdiutil detach "$M" &amp;&amp; xattr -cr "/Applications/Held In Common.app" &amp;&amp; open "/Applications/Held In Common.app"</div>
             <p>On Linux, install the package or mark the AppImage executable and run it.</p>
           </div>
         </div>
         <div class="setup-step">
-          <div class="snum" style="background: var(--blue)">2</div>
+          <svg class="burst" viewBox="0 0 100 100" aria-hidden="true">
+            <path fill="#1f5cff" d="M50 2l9 13 15-6 2 16 16 3-9 13 9 13-16 3-2 16-15-6-9 13-9-13-15 6-2-16-16-3 9-13-9-13 16-3 2-16 15 6z"></path>
+            <text x="50" y="63" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="34" fill="#fff">2</text>
+          </svg>
           <div class="sbody">
             <div class="s-title">Start your node</div>
             <p>
@@ -121,14 +125,20 @@
           </div>
         </div>
         <div class="setup-step">
-          <div class="snum" style="background: var(--jade)">3</div>
+          <svg class="burst" viewBox="0 0 100 100" aria-hidden="true">
+            <path fill="#12b37d" d="M50 2l9 13 15-6 2 16 16 3-9 13 9 13-16 3-2 16-15-6-9 13-9-13-15 6-2-16-16-3 9-13-9-13 16-3 2-16 15 6z"></path>
+            <text x="50" y="63" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="34" fill="#fff">3</text>
+          </svg>
           <div class="sbody">
             <div class="s-title">Add your profile</div>
             <p>Fill in your bio and upload a photo. This is yours &mdash; it lives only on your node until you share it.</p>
           </div>
         </div>
         <div class="setup-step">
-          <div class="snum" style="background: var(--violet)">4</div>
+          <svg class="burst" viewBox="0 0 100 100" aria-hidden="true">
+            <path fill="#8b3fd9" d="M50 2l9 13 15-6 2 16 16 3-9 13 9 13-16 3-2 16-15-6-9 13-9-13-15 6-2-16-16-3 9-13-9-13 16-3 2-16 15 6z"></path>
+            <text x="50" y="63" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="34" fill="#fff">4</text>
+          </svg>
           <div class="sbody">
             <div class="s-title">Share to the commons</div>
             <p>
