@@ -45,8 +45,9 @@
           Get started<span class="dot">.</span>
         </h1>
         <p class="lead">
-          Install the Held in Common node on your own machine, add your profile,
-          and share it to the workshop commons. Your data stays on your node.
+          Install the Held in Common app, make your node on your own computer,
+          add your profile, and share a signed copy to the workshop commons.
+          Your originals stay on your node.
         </p>
       </header>
 
@@ -57,35 +58,21 @@
         <div class="dl">
           <div class="plat" style="color: var(--pink)">macOS</div>
           <div class="dl-title">Apple Silicon</div>
-          <p class="dl-note">M1 / M2 / M3 Macs. Then run the install line below.</p>
+          <p class="dl-note">M1 to M4 Macs. Signed and notarized by Apple, so it opens normally.</p>
           <div class="dl-links">
             <a
               class="btn-ink"
-              href="https://github.com/HeldInCommon/FederatedBios/releases/download/node-app-preview/Held-In-Common-macOS-AppleSilicon.dmg"
+              href="https://github.com/HeldInCommon/FederatedBios/releases/latest/download/Held-In-Common-macOS-AppleSilicon.dmg"
               >Download .dmg &rarr;</a
             >
           </div>
         </div>
         <div class="dl">
           <div class="plat" style="color: var(--blue)">Linux</div>
-          <div class="dl-title">x86&nbsp;64-bit</div>
-          <p class="dl-note">Pick the format for your distro.</p>
+          <div class="dl-title">x86&nbsp;64-bit and ARM</div>
+          <p class="dl-note">.deb (Debian / Ubuntu), .rpm (Fedora / RHEL) or .AppImage (any distro).</p>
           <div class="dl-links">
-            <a
-              class="btn-line"
-              href="https://github.com/HeldInCommon/FederatedBios/releases/download/node-app-preview/Held-In-Common-Linux.deb"
-              >.deb (Debian / Ubuntu)</a
-            >
-            <a
-              class="btn-line"
-              href="https://github.com/HeldInCommon/FederatedBios/releases/download/node-app-preview/Held-In-Common-Linux.rpm"
-              >.rpm (Fedora / RHEL)</a
-            >
-            <a
-              class="btn-line"
-              href="https://github.com/HeldInCommon/FederatedBios/releases/download/node-app-preview/Held-In-Common-Linux.AppImage"
-              >.AppImage (any distro)</a
-            >
+            <a class="btn-line" href="https://github.com/HeldInCommon/FederatedBios/releases/latest">All Linux downloads &rarr;</a>
           </div>
         </div>
       </section>
@@ -102,12 +89,15 @@
           <div class="sbody">
             <div class="s-title">Install and open it</div>
             <p>
-              The build is unsigned, so macOS quarantines it. Paste this one line
-              into Terminal &mdash; it clears the flag, copies the app to
-              Applications, and launches it:
+              <strong>Mac:</strong> open the .dmg, drag
+              <strong>Held In Common</strong> into Applications, and open it from
+              there. No Terminal needed.
             </p>
-            <div class="cmd">D=~/Downloads/Held-In-Common-macOS-AppleSilicon.dmg; xattr -c "$D" &amp;&amp; M=$(hdiutil attach "$D" -nobrowse | grep -o '/Volumes/.*') &amp;&amp; cp -R "$M/Held In Common.app" /Applications/ &amp;&amp; hdiutil detach "$M" &amp;&amp; xattr -cr "/Applications/Held In Common.app" &amp;&amp; open "/Applications/Held In Common.app"</div>
-            <p>On Linux, install the package or mark the AppImage executable and run it.</p>
+            <p>
+              <strong>Linux:</strong> install the .deb or .rpm, or make the
+              AppImage executable and run it (install <code>libfuse2</code> if
+              it won&rsquo;t start).
+            </p>
           </div>
         </div>
         <div class="setup-step">
@@ -116,11 +106,11 @@
             <text x="50" y="63" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="34" fill="#fff">2</text>
           </svg>
           <div class="sbody">
-            <div class="s-title">Start your node</div>
+            <div class="s-title">Choose &ldquo;A node&rdquo; and name it</div>
             <p>
-              Launch the app and click <strong>Start the node</strong>. It runs
-              locally at
-              <a class="inline-url" href="http://localhost:8080">http://localhost:8080</a>.
+              The app asks what you want to run: choose <strong>A node</strong>,
+              your own commons on your own computer. Give it a name, for example
+              &ldquo;Studio laptop&rdquo;. People see it next to your profile.
             </p>
           </div>
         </div>
@@ -130,8 +120,22 @@
             <text x="50" y="63" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="34" fill="#fff">3</text>
           </svg>
           <div class="sbody">
-            <div class="s-title">Add your profile</div>
-            <p>Fill in your bio and upload a photo. This is yours &mdash; it lives only on your node until you share it.</p>
+            <div class="s-title">Add your profile, and keep your recovery code</div>
+            <p>
+              Click <strong>Add your profile</strong>, pick a handle (your
+              <code>@name</code>) and a passphrase. A forgotten passphrase
+              can&rsquo;t be recovered.
+            </p>
+            <p>
+              Your <strong>recovery code</strong> is shown once. Write it down
+              and keep it offline: it takes your handle back if your keys are
+              ever stolen.
+            </p>
+            <p>
+              Then fill in your bio and photo, choose who can see it and a
+              licence, and <strong>Publish</strong>. It&rsquo;s saved on your
+              computer only.
+            </p>
           </div>
         </div>
         <div class="setup-step">
@@ -140,13 +144,20 @@
             <text x="50" y="63" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="34" fill="#fff">4</text>
           </svg>
           <div class="sbody">
-            <div class="s-title">Share to the commons</div>
+            <div class="s-title">Share to the workshop commons</div>
             <p>
-              In <strong>Share to a commons</strong> the workshop address is
-              pre-filled &mdash; just confirm it and share. Your signed profile
-              appears in the directory as <strong>Federated</strong>.
+              On your profile, under <strong>Share to a commons</strong>, open
+              <strong>Share with an invite code, or to another commons</strong>,
+              enter the workshop address and press <strong>Share</strong>:
             </p>
-            <div class="cmd">https://vbua1zoh50dz51-8888.proxy.runpod.net</div>
+            <div class="cmd">https://heldincommon.cerberus-broadnose.ts.net</div>
+            <p>
+              <strong>Got an invite code?</strong> Paste it in and you&rsquo;re
+              listed straight away. Without one you&rsquo;ll see
+              <strong>Waiting for a vouch</strong> until a member vouches for you
+              or the steward approves you. Press <strong>Check now</strong> to
+              see if you&rsquo;re in.
+            </p>
           </div>
         </div>
       </section>
@@ -154,18 +165,19 @@
       <section class="cta">
         <h2>You&rsquo;re in the commons.</h2>
         <p class="lead">
-          Your originals stay on your node. You can reshape or withdraw what you
-          shared at any time.
+          Your originals stay on your node. Members-only work never leaves it.
+          You can withdraw what you shared at any time.
         </p>
         <div class="cta-actions">
           <a
-            href="https://vbua1zoh50dz51-8888.proxy.runpod.net"
+            href="https://heldincommon.cerberus-broadnose.ts.net"
             class="btn-solid"
             target="_blank"
+            rel="noopener"
           >
             Open the commons directory &rarr;
           </a>
-          <a href="../index.html" class="btn-outline">How it works &rarr;</a>
+          <a href="https://github.com/HeldInCommon/FederatedBios/blob/main/docs/INSTALL.md" class="btn-outline">Full install guide &rarr;</a>
         </div>
       </section>
 
