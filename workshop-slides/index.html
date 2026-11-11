@@ -138,7 +138,7 @@
   <div>
     <span class="kicker">First word: node</span>
     <h2 class="sm">A node is<br/>an app you run<span class="dot">.</span></h2>
-    <p class="body fragment rise" style="margin-top:40px">You install Held in Common on <strong>your own computer</strong> — Mac or Linux. It opens like any app and holds your work at full quality. No company account; your <strong>keys stay on your machine</strong>.</p>
+    <p class="body fragment rise" style="margin-top:40px">You install Held in Common on <strong>your own computer</strong> — Mac or Linux. The Mac app is <strong>signed by Apple</strong>, so it opens like any app. Choose <strong>A node</strong> and give it a name. No company account; your <strong>keys stay on your machine</strong>.</p>
     <p class="fragment rise" style="margin-top:28px; font-family:var(--mono); font-weight:700; font-size:26px; color:var(--blue)">Install it &rarr;&nbsp; <span style="color:var(--ink)">heldincommon.org/workshop</span></p>
   </div>
   <div class="gfx fragment rise">
@@ -223,7 +223,7 @@
     <span class="kicker">Second word: commons</span>
     <h2 class="sm">A commons is<br/>a shared room<span class="dot">.</span></h2>
     <p class="body fragment rise" style="margin-top:40px">Anyone can host one — your <strong>collective</strong>, a <strong>festival</strong>, a <strong>gallery</strong>. You bring copies in; the originals stay in your studio. Walk out and they're still yours.</p>
-    <p class="body fragment rise" style="margin-top:24px; color:var(--blue)">And it's the same app: point your node outward to receive, and <strong>you're hosting a commons too</strong>.</p>
+    <p class="body fragment rise" style="margin-top:24px; color:var(--blue)">And it's the same app: choose <strong>A commons</strong> instead, and <strong>you're hosting one too</strong>. Its <strong>steward</strong> lets people in.</p>
   </div>
   <div class="gfx fragment rise">
     <svg viewBox="0 0 200 200" aria-hidden="true">
@@ -251,9 +251,9 @@
     </div>
     <div class="tiers">
       <div class="tier fragment rise" data-fragment-index="0"><span class="swatch" style="background:#111"></span><div><div class="nm">Just me</div><div class="ds">It stays in your studio. Nothing is shared at all.</div></div></div>
-      <div class="tier fragment rise" data-fragment-index="1"><span class="swatch" style="background:#ff2d9b"></span><div><div class="nm accent-p">My collective</div><div class="ds">Members-only — encrypted so only the people you name can open it.</div></div></div>
-      <div class="tier fragment rise" data-fragment-index="2"><span class="swatch" style="background:#1f5cff"></span><div><div class="nm accent-b">Collaborators</div><div class="ds">In the commons, shared by link — present, but kept out of search.</div></div></div>
-      <div class="tier fragment rise" data-fragment-index="3"><span class="swatch" style="background:#111; opacity:.4"></span><div><div class="nm">A festival or gallery</div><div class="ds">Public — listed in the commons and open for anyone to find.</div></div></div>
+      <div class="tier fragment rise" data-fragment-index="1"><span class="swatch" style="background:#ff2d9b"></span><div><div class="nm accent-p">My collective</div><div class="ds">Members only — encrypted to your node's members, and never sent to a commons.</div></div></div>
+      <div class="tier fragment rise" data-fragment-index="2"><span class="swatch" style="background:#1f5cff"></span><div><div class="nm accent-b">Collaborators</div><div class="ds">Listed in the commons — in the directory, but kept out of search engines.</div></div></div>
+      <div class="tier fragment rise" data-fragment-index="3"><span class="swatch" style="background:#111; opacity:.4"></span><div><div class="nm">A festival or gallery</div><div class="ds">Public — listed in the commons and open to search engines.</div></div></div>
     </div>
   </div>
 </div></section>
@@ -263,7 +263,7 @@
   <div>
     <span class="kicker">Your collective's circle</span>
     <h2 class="sm">Locked to the<br/>people you name<span class="dot">.</span></h2>
-    <p class="body fragment rise" style="margin-top:40px">Members-only work is <strong>scrambled</strong> so only your collective's keys can open it. It never leaves your studio readable — <strong>not even the commons can see inside</strong>, and it's never used to train a model.</p>
+    <p class="body fragment rise" style="margin-top:40px">Members-only work is <strong>encrypted</strong> so only your members' keys can open it. It <strong>never leaves your node</strong> — no commons ever receives it — so it's never used to train a model.</p>
   </div>
   <div class="gfx fragment rise">
     <svg viewBox="0 0 220 220" aria-hidden="true">
@@ -324,12 +324,19 @@
   <span class="kicker">How you actually use it</span>
   <h2 class="sm" style="margin-bottom:34px">From install to shared, step by step<span class="dot">.</span></h2>
   <div class="steps">
-    <div class="step fragment rise"><div class="no">01</div><div><div class="tt">Open the app</div><div class="dd">Get it at <strong>heldincommon.org/workshop</strong>. It starts your node on your computer and opens its page in your browser.</div></div></div>
-    <div class="step fragment rise"><div class="no">02</div><div><div class="tt">Make a handle</div><div class="dd">The app creates your keys and keeps them on your machine. No email, no company.</div></div></div>
-    <div class="step fragment rise"><div class="no">03</div><div><div class="tt">Add your work</div><div class="dd">Each piece gets a fingerprint and your signature, stored on your node.</div></div></div>
-    <div class="step fragment rise"><div class="no">04</div><div><div class="tt">Choose its reach</div><div class="dd">Public, commons, or members-only — encrypted to the people you name.</div></div></div>
-    <div class="step fragment rise" style="grid-column:1 / -1"><div class="no">05</div><div><div class="tt">Send it to a commons</div><div class="dd">Your node posts a signed copy; the commons checks the signature and fingerprint, then lists it. Members-only never leaves.</div></div></div>
+    <div class="step fragment rise"><div class="no">01</div><div><div class="tt">Open the app</div><div class="dd">Get it at <strong>heldincommon.org/workshop</strong>. Choose <strong>A node</strong> and name it; it runs on your computer.</div></div></div>
+    <div class="step fragment rise"><div class="no">02</div><div><div class="tt">Make a handle</div><div class="dd">Pick an <strong>@name</strong> and a passphrase. Your keys stay on your machine. Write down the <strong>recovery code</strong>.</div></div></div>
+    <div class="step fragment rise"><div class="no">03</div><div><div class="tt">Add your profile</div><div class="dd">Bio, photo, licence and signals. Each version gets a fingerprint and your signature.</div></div></div>
+    <div class="step fragment rise"><div class="no">04</div><div><div class="tt">Choose its reach</div><div class="dd">Public, listed in the commons, or members only — which never leaves your node.</div></div></div>
+    <div class="step fragment rise" style="grid-column:1 / -1"><div class="no">05</div><div><div class="tt">Share it to a commons</div><div class="dd">Your node sends a signed copy; the commons checks it. With an <strong>invite code</strong> you're listed straight away — otherwise a member <strong>vouches</strong> for you, or the steward approves you.</div></div></div>
   </div>
+</div></section>
+
+<!-- 12b · Joining a commons -->
+<section><div class="pad">
+  <span class="kicker">Who gets into the room</span>
+  <h2 class="sm" style="margin-bottom:36px">No sign-up.<br/>Someone vouches<span class="dot">.</span></h2>
+  <p class="body wide fragment rise" style="max-width:48ch">A commons has <strong>no sign-up page</strong>: profiles arrive as signed copies from people's own nodes. A newcomer is listed once a member <strong>vouches</strong> for them, the <strong>steward</strong> approves them, or they bring a one-time <strong>invite code</strong>. Members can invite others with a code, by email.</p>
 </div></section>
 
 <!-- 13 · Trust / the seal -->
@@ -337,7 +344,7 @@
   <div>
     <span class="kicker">Why it can be trusted</span>
     <h2 class="sm">No one can<br/>fake your work<span class="dot">.</span></h2>
-    <p class="body fragment rise" style="margin-top:40px">Every copy is <strong>signed</strong> with your key and carries a <strong>fingerprint</strong>. Change one character and the commons rejects it. The seal is how a stranger knows a work is really yours.</p>
+    <p class="body fragment rise" style="margin-top:40px">Every copy is <strong>signed</strong> with your key and carries a <strong>fingerprint</strong>. Change one character and the commons rejects it. Lose your keys and your <strong>recovery code</strong> takes your handle back; change your mind and you can <strong>withdraw</strong> what you shared.</p>
   </div>
   <div class="gfx">
     <svg viewBox="0 0 128 132" style="width:330px">
@@ -394,6 +401,7 @@
   <p class="sub fragment rise" style="max-width:38ch">Your node, your keys, your terms. &nbsp;·&nbsp; heldincommon.org</p>
   <p class="fragment rise" style="margin-top:48px; font-family:var(--mono); font-weight:700; font-size:40px; letter-spacing:.04em; color:var(--blue)">Build it with us &rarr;</p>
   <p class="fragment rise" style="margin:14px 0 0; font-family:var(--mono); font-weight:700; font-size:60px; line-height:1.04; letter-spacing:-.02em; color:var(--ink)">heldincommon.org/workshop</p>
+  <p class="fragment rise" style="margin:28px 0 0; font-family:var(--mono); font-size:26px; color:var(--gray)">Today's commons: <span style="color:var(--ink)">heldincommon.cerberus-broadnose.ts.net</span></p>
 </div></section>
 
 </div></div>
