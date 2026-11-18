@@ -742,6 +742,11 @@ footer .funder { color: var(--ink); }
 
 .sub-foot { margin-top: 48px; padding-top: 26px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; padding-bottom: 80px; }
 
+/* Funder acknowledgement (grant UKRI3355): a full sentence, so sentence case
+   and normal tracking keep it readable; the grant title is not italic. */
+.funding { letter-spacing: normal; text-transform: none; line-height: 1.5; }
+.funding cite { font-style: normal; }
+
 /* ============================================================================
    Mobile optimisation — placed last so it overrides subpage base styles.
    Fits wide mono headings to the viewport and enlarges the smallest text.
