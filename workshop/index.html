@@ -70,7 +70,7 @@
         <div class="dl">
           <div class="plat" style="color: var(--blue)">Linux</div>
           <div class="dl-title">x86&nbsp;64-bit and ARM</div>
-          <p class="dl-note">.deb (Debian / Ubuntu), .rpm (Fedora / RHEL) or .AppImage (any distro).</p>
+          <p class="dl-note">.deb (Debian / Ubuntu), .rpm (Fedora / RHEL) or .AppImage (any distro). Not sure which? Run <code>uname -m</code>: <code>x86_64</code> is x86, <code>aarch64</code> is ARM.</p>
           <div class="dl-links">
             <a class="btn-line" href="https://github.com/HeldInCommon/FederatedBios/releases/latest">All Linux downloads &rarr;</a>
           </div>
@@ -111,6 +111,8 @@
               The app asks what you want to run: choose <strong>A node</strong>,
               your own commons on your own computer. Give it a name, for example
               &ldquo;Studio laptop&rdquo;. People see it next to your profile.
+              You can rename it later from <strong>This computer</strong>, the
+              panel in the sidebar.
             </p>
           </div>
         </div>
@@ -132,8 +134,8 @@
               ever stolen.
             </p>
             <p>
-              Then fill in your bio and photo, choose who can see it and a
-              licence, and <strong>Publish</strong>. It&rsquo;s saved on your
+              Then fill in your bio and photo, choose who can see it, a
+              licence and signals, and <strong>Publish</strong>. It&rsquo;s saved on your
               computer only.
             </p>
           </div>
@@ -146,19 +148,46 @@
           <div class="sbody">
             <div class="s-title">Share to the workshop commons</div>
             <p>
-              On your profile, under <strong>Share to a commons</strong>, open
-              <strong>Share with an invite code, or to another commons</strong>,
-              enter the workshop address and press <strong>Share</strong>:
+              Once your profile is published, your node offers the next step:
+              press <strong>Share to Held in Common Collective Commons</strong>.
+              A signed copy goes to the commons; the original stays on your
+              computer.
             </p>
-            <!-- Hidden while the Tailscale commons is down; bring back when it is up again.
+            <p>
+              To share somewhere else, or with an invite code, open
+              <strong>Share with an invite code, or to another commons</strong>
+              under <strong>Share to a commons</strong>, enter the address and
+              press <strong>Share</strong>. The workshop commons is at:
+            </p>
             <div class="cmd">https://heldincommon.cerberus-broadnose.ts.net</div>
-            -->
             <p>
               <strong>Got an invite code?</strong> Paste it in and you&rsquo;re
               listed straight away. Without one you&rsquo;ll see
               <strong>Waiting for a vouch</strong> until a member vouches for you
               or the steward approves you. Press <strong>Check now</strong> to
               see if you&rsquo;re in.
+            </p>
+          </div>
+        </div>
+        <div class="setup-step">
+          <svg class="burst" viewBox="0 0 100 100" aria-hidden="true">
+            <path fill="#ff2d9b" d="M50 2l9 13 15-6 2 16 16 3-9 13 9 13-16 3-2 16-15-6-9 13-9-13-15 6-2-16-16-3 9-13-9-13 16-3 2-16 15 6z"></path>
+            <text x="50" y="63" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="34" fill="#fff">5</text>
+          </svg>
+          <div class="sbody">
+            <div class="s-title">Write a story</div>
+            <p>
+              Go to <strong>Stories &rarr; Write a story</strong>. The workshop
+              prompt: <em>Listen to your street for a minute. Write a small
+              story from what you hear.</em> It stays on your computer until
+              you press <strong>Share</strong>, and you can withdraw it from the
+              commons at any time.
+            </p>
+            <p>
+              On the rights step you can write your own terms for AI. If you
+              like, tick <strong>Share these terms with the Held in Common
+              project for research</strong>: we receive your terms only, never
+              your name, handle or story.
             </p>
           </div>
         </div>
@@ -171,7 +200,6 @@
           You can withdraw what you shared at any time.
         </p>
         <div class="cta-actions">
-          <!-- Hidden while the Tailscale commons is down; bring back when it is up again.
           <a
             href="https://heldincommon.cerberus-broadnose.ts.net"
             class="btn-solid"
@@ -180,7 +208,6 @@
           >
             Open the commons directory &rarr;
           </a>
-          -->
           <a href="https://github.com/HeldInCommon/FederatedBios/blob/main/docs/INSTALL.md" class="btn-outline">Full install guide &rarr;</a>
         </div>
       </section>
